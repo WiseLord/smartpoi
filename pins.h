@@ -2,7 +2,8 @@
 #define PINS_H
 
 #include <avr/io.h>
-#include "arduinopromini.h"
+//#include "arduinopromini.h"
+#include "arduinoleonardo.h"
 
 #define CONCAT(x,y)         x ## y
 

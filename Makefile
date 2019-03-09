@@ -2,7 +2,8 @@
 TARG     = ledgarland
 
 # MCU name and frequency
-MCU      = atmega328p
+#MCU      = atmega328p
+MCU      = atmega32u4
 F_CPU    = 8000000
 
 # Source files
@@ -63,4 +64,4 @@ flash: $(ELF)
 
 .PHONY: fuse
 fuse:
-	$(AVRDUDE) $(AD_CMD) -U lfuse:w:0xe2:m -U hfuse:w:0xd8:m -U efuse:w:0xfb:m
+	$(AVRDUDE) $(AD_CMD) -U lfuse:w:0xe2:m -U hfuse:w:0xd1:m -U efuse:w:0xcf:m
