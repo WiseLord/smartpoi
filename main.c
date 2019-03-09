@@ -19,7 +19,7 @@ int main(void)
 {
     hwInit();
 
-    Effect_t effect = EFFECT_FILL_RAINBOW;
+    Effect_t effect = EFFECT_RUN_PROGRAM;
     effectSetRandom(false);
 
     effectRun(effect);

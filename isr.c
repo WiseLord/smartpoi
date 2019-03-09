@@ -8,7 +8,7 @@
 
 void isrInit()
 {
-    TCCR0B = (1 << CS02) | (0 << CS01) | (0 << CS00);   // PSK = 256
+    TCCR0B = (0 << CS02) | (1 << CS01) | (1 << CS00);   // PSK = 64
     TIMSK0 |= (1 << TOIE0);                             // Overflow
 
     sei();

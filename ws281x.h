@@ -3,7 +3,7 @@
 
 #include <inttypes.h>
 
-#define LED_NUM 16
+#define LED_NUM 24
 
 // Bit timings, measured experimentally
 #define T0H     350     // Zero bit time (ns)
@@ -16,8 +16,8 @@
 typedef union {
     uint8_t led[3];
     struct {
-        uint8_t red;
         uint8_t green;
+        uint8_t red;
         uint8_t blue;
     };
 } RGBLed;

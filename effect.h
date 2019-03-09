@@ -14,6 +14,8 @@ typedef enum {
     EFFECT_STAR_SPLASH,
     EFFECT_FADE_COLOR,
 
+    EFFECT_RUN_PROGRAM,
+
     EFFECT_END
 } Effect_t;
 

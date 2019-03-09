@@ -6,6 +6,7 @@
 #include <util/delay.h>
 #include "input.h"
 #include "pins.h"
+#include "program.h"
 #include "ws281x.h"
 
 // Cell in eeprom that stores random seed
@@ -169,6 +170,28 @@ static void effectfFadeColor()
     }
 }
 
+static void effectRunProgram()
+{
+    RGBLed rgbLed;
+
+    size_t size;
+    const uint8_t *prog;
+
+    size = getRhomb(&prog);
+
+    size_t line = 0;
+    while (run) {
+        for (uint8_t i = 0; run && i < LED_NUM; i++) {
+            brArray[i] = BR_MAX;
+            ws281xSetBrColor(&rgbLed, brArray[i], pgm_read_byte(&prog[line * LED_NUM + i]));
+            ws281xSetLed(i, &rgbLed);
+        }
+        if (++line >= size)
+            line = 0;
+        _delay_ms(1);
+    }
+}
+
 void effectInit(void)
 {
     // Update random seed in eeprom
@@ -204,6 +227,9 @@ void effectRun(Effect_t effect)
         break;
     case EFFECT_FADE_COLOR:
         effectfFadeColor();
+        break;
+    case EFFECT_RUN_PROGRAM:
+        effectRunProgram();
         break;
     default:
         break;
