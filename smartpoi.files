@@ -7,8 +7,8 @@ isr.c
 isr.h
 main.c
 pins.h
-program.c
 program.h
+program_colors.c
 ws281x.h
 ws281x.c
 .astylerc

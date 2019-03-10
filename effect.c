@@ -174,21 +174,19 @@ static void effectRunProgram()
 {
     RGBLed rgbLed;
 
-    size_t size;
-    const uint8_t *prog;
-
-    size = getRhomb(&prog);
+    uint16_t height = pgm_read_word(&colors.height);
+    const uint8_t *data = pgm_read_ptr(&colors.data);
 
     size_t line = 0;
     while (run) {
         for (uint8_t i = 0; run && i < LED_NUM; i++) {
             brArray[i] = BR_MAX;
-            ws281xSetBrColor(&rgbLed, brArray[i], pgm_read_byte(&prog[line * LED_NUM + i]));
+            ws281xSetBrColor(&rgbLed, brArray[i], pgm_read_byte(&data[line * LED_NUM + i]));
             ws281xSetLed(i, &rgbLed);
         }
-        if (++line >= size)
+        if (++line >= height)
             line = 0;
-        _delay_ms(1);
+        _delay_ms(20);
     }
 }
 
