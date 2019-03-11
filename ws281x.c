@@ -162,7 +162,7 @@ void ws281xSetLed(uint8_t num, const RGBLed *ws2811)
 
 void ws281xShift(void)
 {
-    memmove(strip + 3, strip , 3 * (LED_NUM - 1));
+    memmove(strip + 3, strip, 3 * (LED_NUM - 1));
 }
 
 // Converts R2G2B2 color to RGBLed, multiplying with brightness value
@@ -192,6 +192,11 @@ void ws281xSetStripLed(uint8_t num, RGBColor color)
 
     part = color & RGB_BLUE;
     strip[3 * num + 2] = (part << 6) | (part << 4) | (part << 2) | (part);
+}
+
+void ws281xSetStripPart(uint16_t oft, uint8_t value)
+{
+    strip[oft] = value;
 }
 
 void ws221xUpdateStrip(void)

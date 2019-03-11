@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <preset>
-  <name>SmartPOI R2G2B2</name>
+  <name>smartpoi</name>
   <prepare>
     <convType>2</convType>
     <monoType>1</monoType>
@@ -18,7 +18,7 @@
     <maskUsed>0000003f</maskUsed>
     <maskAnd>ffffffff</maskAnd>
     <maskOr>00000000</maskOr>
-    <maskFill>0000003f</maskFill>
+    <maskFill>000000ff</maskFill>
     <operations count="3">
       <operation index="0">
         <mask>00c00000</mask>
@@ -65,7 +65,7 @@
     <codec>037</codec>
   </font>
   <templates>
-    <images>:/templates/image_convert</images>
+    <images>/home/AVR/Projects/smartpoi/img/smartpoi.tmpl</images>
     <fonts>:/templates/font_convert</fonts>
   </templates>
 </preset>

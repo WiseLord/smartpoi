@@ -184,16 +184,49 @@ static void effectRunProgram(Effect_t eff)
     }
 
     uint16_t height = pgm_read_word(&prog->height);
-    const uint8_t *data = pgm_read_ptr(&prog->data);
+    const uint8_t *progData = pgm_read_ptr(&prog->data);
 
     size_t line = 0;
+    const uint8_t *data = progData;
+
     while (run) {
+        uint8_t pgm = 0;
+        uint8_t bitPair = 0; // 0xC0 => 0, 0x30 => 1, 0x0C => 2 0x03 => 3
         for (uint8_t i = 0; run && i < LED_NUM; i++) {
-            ws281xSetStripLed(i, pgm_read_byte(&data[line * LED_NUM + i]));
+
+            for (uint8_t j = 0; j < 3; j++) {
+                if (bitPair == 0) {
+                    pgm = pgm_read_byte(data++);    // Read new data byte
+                } else {
+                    pgm <<= 2;                      // Shift previously read one
+                }
+                if (++bitPair >= 4)
+                    bitPair = 0;
+
+                uint8_t value = pgm & 0xC0;
+                // Convert 0bXY------ to 0bXYXYXYXY in led strip array
+                switch (value) {
+                case 0xC0:
+                    value = 0xFF;
+                    break;
+                case 0x80:
+                    value = 0xAA;
+                    break;
+                case 0x40:
+                    value = 0x55;
+                    break;
+                default:
+                    value = 0x00;
+                }
+
+                ws281xSetStripPart(3 * i + j, value);
+            }
         }
-        if (++line >= height)
+        if (++line >= height) {
             line = 0;
-        _delay_ms(50);
+            data = progData;
+        }
+        _delay_ms(20);
     }
 }
 
