@@ -7,6 +7,8 @@
 #define EFFECT_RUNNING  1
 
 typedef enum {
+    EFFECT_BEGIN = 0,
+
     EFFECT_RUNNING_LEDS,
     EFFECT_RANDOM_COLOR,
     EFFECT_FILL_RAINBOW,
@@ -14,7 +16,8 @@ typedef enum {
     EFFECT_STAR_SPLASH,
     EFFECT_FADE_COLOR,
 
-    EFFECT_RUN_PROGRAM,
+    PROG_BEGIN,
+    PROG_COLORS = PROG_BEGIN,
 
     EFFECT_END
 } Effect_t;

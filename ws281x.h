@@ -56,6 +56,7 @@ void ws281xInit(void);
 void ws281xSetLed(uint8_t num, const RGBLed *ws2811);
 void ws281xShift(void);
 void ws281xSetBrColor(RGBLed *ws2811, uint8_t br, RGBColor color);
+void ws281xSetStripLed(uint8_t num, RGBColor color);
 void ws221xUpdateStrip(void);
 
 #endif // WS281X_H

@@ -170,23 +170,30 @@ static void effectfFadeColor()
     }
 }
 
-static void effectRunProgram()
+static void effectRunProgram(Effect_t eff)
 {
-    RGBLed rgbLed;
+    const tImage *prog;
 
-    uint16_t height = pgm_read_word(&colors.height);
-    const uint8_t *data = pgm_read_ptr(&colors.data);
+    switch (eff) {
+    case PROG_COLORS:
+        prog = &colors;
+        break;
+    default:
+        prog = &colors;
+        break;
+    }
+
+    uint16_t height = pgm_read_word(&prog->height);
+    const uint8_t *data = pgm_read_ptr(&prog->data);
 
     size_t line = 0;
     while (run) {
         for (uint8_t i = 0; run && i < LED_NUM; i++) {
-            brArray[i] = BR_MAX;
-            ws281xSetBrColor(&rgbLed, brArray[i], pgm_read_byte(&data[line * LED_NUM + i]));
-            ws281xSetLed(i, &rgbLed);
+            ws281xSetStripLed(i, pgm_read_byte(&data[line * LED_NUM + i]));
         }
         if (++line >= height)
             line = 0;
-        _delay_ms(20);
+        _delay_ms(50);
     }
 }
 
@@ -226,10 +233,11 @@ void effectRun(Effect_t effect)
     case EFFECT_FADE_COLOR:
         effectfFadeColor();
         break;
-    case EFFECT_RUN_PROGRAM:
-        effectRunProgram();
+    case PROG_COLORS:
+        effectRunProgram(effect);
         break;
     default:
+        effectRunProgram(PROG_BEGIN);
         break;
     }
 }
@@ -273,6 +281,8 @@ void effectSetRandom(bool value)
 void effectNext(void)
 {
     if (++eff >= EFFECT_END) {
-        eff = EFFECT_RUNNING_LEDS;
+        eff = PROG_COLORS;
+    } else if (eff == PROG_BEGIN) {
+        eff = EFFECT_BEGIN;
     }
 }

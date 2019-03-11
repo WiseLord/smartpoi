@@ -19,7 +19,7 @@ int main(void)
 {
     hwInit();
 
-    Effect_t effect = EFFECT_RUN_PROGRAM;
+    Effect_t effect = PROG_COLORS;
     effectSetRandom(false);
 
     effectRun(effect);

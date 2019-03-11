@@ -147,7 +147,7 @@ void ws281xInit(void)
     OUT(WS281X);
 }
 
-
+// Adds RGBLed to strip, converting 5bit R/G/B values to 8bit ones, using gamma
 void ws281xSetLed(uint8_t num, const RGBLed *ws2811)
 {
     uint8_t raw;
@@ -165,6 +165,7 @@ void ws281xShift(void)
     memmove(strip + 3, strip , 3 * (LED_NUM - 1));
 }
 
+// Converts R2G2B2 color to RGBLed, multiplying with brightness value
 void ws281xSetBrColor(RGBLed *ws2811, uint8_t br, RGBColor color)
 {
     uint8_t part;
@@ -177,6 +178,20 @@ void ws281xSetBrColor(RGBLed *ws2811, uint8_t br, RGBColor color)
 
     part = (color & RGB_BLUE) >> 0;
     ws2811->blue = br * part / 3;
+}
+
+void ws281xSetStripLed(uint8_t num, RGBColor color)
+{
+    uint8_t part;
+
+    part = color & RGB_RED;
+    strip[3 * num + 0] = (part << 2) | (part) | (part >> 2) | (part >> 4);
+
+    part = color & RGB_LIME;
+    strip[3 * num + 1] = (part << 4) | (part << 2) | (part) | (part >> 2);
+
+    part = color & RGB_BLUE;
+    strip[3 * num + 2] = (part << 6) | (part << 4) | (part << 2) | (part);
 }
 
 void ws221xUpdateStrip(void)
