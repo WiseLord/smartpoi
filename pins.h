@@ -2,8 +2,6 @@
 #define PINS_H
 
 #include <avr/io.h>
-//#include "arduinopromini.h"
-#include "arduinoleonardo.h"
 
 #define CONCAT(x,y)         x ## y
 
@@ -17,13 +15,13 @@
 #define CLR(x)              (PORT(x) &= ~x ## _LINE)
 #define READ(x)             (PIN(x) & x ## _LINE)
 
-#define WS281X              ARDUINO_A3
-#define WS281X_LINE         ARDUINO_A3_LINE
+#define WS281X              B
+#define WS281X_LINE         (1<<3)
 
-#define BUTTON_0            ARDUINO_D2
-#define BUTTON_0_LINE       ARDUINO_D2_LINE
+#define BUTTON_0            B
+#define BUTTON_0_LINE       (1<<4)
 
-#define LED_RED             ARDUINO_D13
-#define LED_RED_LINE        ARDUINO_D13_LINE
+#define LED_RED             B
+#define LED_RED_LINE        (1<<5)
 
 #endif // PINS_H
