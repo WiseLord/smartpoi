@@ -19,7 +19,7 @@ int main(void)
 {
     hwInit();
 
-    Effect_t effect = PROG_BEGIN;
+    Effect_t effect = EFFECT_BEGIN;
     effectSetRandom(true);
 
     effectRun(effect);
@@ -27,18 +27,17 @@ int main(void)
     while (1) {
         switch (getBtnCmd()) {
         case BTN_0:
-            effectSetRandom(false);
             effectNext();
             break;
         case BTN_0_LONG:
-            effectSetRandom(true);
+            effectSetRandom(!effectGetRandom());
+            effectNext();
             break;
         case BTN_1:
-            effectSetRandom(false);
-            effectSwitchType();
+            effectNext();
             break;
         case BTN_1_LONG:
-            effectSetRandom(true);
+            effectSwitchType();
             break;
         default:
             break;

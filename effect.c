@@ -175,11 +175,20 @@ static void effectRunProgram(Effect_t eff)
     const tImage *prog;
 
     switch (eff) {
-    case PROG_COLORS:
-        prog = &colors;
+    case PROG_FIRE:
+        prog = &prog_fire;
+        break;
+    case PROG_SAURON:
+        prog = &prog_sauron;
+        break;
+    case PROG_STARS:
+        prog = &prog_stars;
+        break;
+    case PROG_WATER:
+        prog = &prog_water;
         break;
     default:
-        prog = &colors;
+        prog = &prog_fire;
         break;
     }
 
@@ -226,7 +235,7 @@ static void effectRunProgram(Effect_t eff)
             line = 0;
             data = progData;
         }
-        _delay_ms(20);
+        _delay_ms(5);
     }
 }
 
@@ -265,7 +274,6 @@ void effectRun(Effect_t effect)
     case EFFECT_FADE_COLOR:
         effectfFadeColor();
         break;
-    case PROG_COLORS:
     case PROG_FIRE:
     case PROG_SAURON:
     case PROG_STARS:
@@ -310,6 +318,11 @@ void effectSetRandom(bool value)
     } else {
         setRandTimer(RAND_TIMER_OFF);
     }
+}
+
+bool effectGetRandom(void)
+{
+    return randomize;
 }
 
 void effectNext(void)

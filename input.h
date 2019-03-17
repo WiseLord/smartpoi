@@ -16,7 +16,7 @@
 #define LONG_PRESS              300
 
 #define RAND_TIMER_OFF          -1
-#define RAND_TIMER_START        (244 * 30)
+#define RAND_TIMER_START        5000
 
 void inputInit(void);
 void inputRead(void);

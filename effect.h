@@ -9,8 +9,7 @@
 typedef enum {
     EFFECT_BEGIN = 0,
 
-    PROG_COLORS = EFFECT_BEGIN,
-    EFFECT_RUNNING_LEDS,
+    EFFECT_RUNNING_LEDS = EFFECT_BEGIN,
     EFFECT_RANDOM_COLOR,
     EFFECT_FILL_RAINBOW,
     EFFECT_WAVE_RAINBOW,
@@ -33,7 +32,10 @@ void effectRun(Effect_t effect);
 void effectStop(void);
 Effect_t effectGet(void);
 void effectLedsOff(void);
+
 void effectSetRandom(bool value);
+bool effectGetRandom(void);
+
 void effectNext(void);
 void effectSwitchType(void);
 

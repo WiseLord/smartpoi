@@ -16,7 +16,7 @@ void inputInit(void)
 
 void inputRead(void)
 {
-    static uint8_t btnCnt = 0;              // Buttons press duration
+    static uint16_t btnCnt = 0;             // Buttons press duration
     static uint8_t btnPrev = BTN_STATE_0;   // Previous buttons state
 
     uint8_t btnNow = BTN_STATE_0;

@@ -6,7 +6,6 @@ isr.c
 isr.h
 main.c
 pins.h
-prog_colors.c
 prog_fire.c
 prog_sauron.c
 prog_stars.c
