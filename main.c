@@ -19,8 +19,8 @@ int main(void)
 {
     hwInit();
 
-    Effect_t effect = PROG_COLORS;
-    effectSetRandom(false);
+    Effect_t effect = PROG_BEGIN;
+    effectSetRandom(true);
 
     effectRun(effect);
 
@@ -31,6 +31,13 @@ int main(void)
             effectNext();
             break;
         case BTN_0_LONG:
+            effectSetRandom(true);
+            break;
+        case BTN_1:
+            effectSetRandom(false);
+            effectSwitchType();
+            break;
+        case BTN_1_LONG:
             effectSetRandom(true);
             break;
         default:

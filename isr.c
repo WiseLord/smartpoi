@@ -14,7 +14,7 @@ void isrInit()
     sei();
 }
 
-// Every ~8ms (8000000 / PSK / 256 = 122Hz)
+// Every ~2ms (8000000 / PSK / 256 = 488Hz)
 ISR(TIMER0_OVF_vect)
 {
     // Send data to LED strip

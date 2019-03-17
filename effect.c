@@ -238,7 +238,6 @@ void effectInit(void)
     seed = (uint32_t)rand();
     eeprom_write_dword(EEPROM_SEED, seed);
 
-    OUT(LED_RED);
     effectSetRandom(true);
 }
 
@@ -304,18 +303,25 @@ void effectSetRandom(bool value)
 
     if (value) {
         setRandTimer(RAND_TIMER_START);
-        SET(LED_RED);
     } else {
         setRandTimer(RAND_TIMER_OFF);
-        CLR(LED_RED);
     }
 }
 
 void effectNext(void)
 {
-    if (++eff >= EFFECT_END) {
-        eff = PROG_COLORS;
-    } else if (eff == PROG_BEGIN) {
+    if (++eff >= PROG_END) {
+        eff = PROG_BEGIN;
+    } else if (eff == EFFECT_END) {
+        eff = EFFECT_BEGIN;
+    }
+}
+
+void effectSwitchType()
+{
+    if (eff < EFFECT_END) {
+        eff = PROG_BEGIN;
+    } else {
         eff = EFFECT_BEGIN;
     }
 }

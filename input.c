@@ -9,7 +9,9 @@ static volatile int16_t randTimer = 0;      // Random timer
 void inputInit(void)
 {
     IN(BUTTON_0);
-    SET(BUTTON_0);
+    IN(BUTTON_1);
+    CLR(BUTTON_0);
+    CLR(BUTTON_1);
 }
 
 void inputRead(void)
@@ -19,16 +21,11 @@ void inputRead(void)
 
     uint8_t btnNow = BTN_STATE_0;
 
-    if (~PIN(BUTTON_0) & BUTTON_0_LINE)
+    if (PIN(BUTTON_0) & BUTTON_0_LINE)
         btnNow |= BTN_0;
-    /*
-    if (~PIN(BUTTON_1) & BUTTON_1_LINE)
+    if (PIN(BUTTON_1) & BUTTON_1_LINE)
         btnNow |= BTN_1;
-    if (~PIN(BUTTON_2) & BUTTON_2_LINE)
-        btnNow |= BTN_2;
-    if (~PIN(BUTTON_3) & BUTTON_3_LINE)
-        btnNow |= BTN_3;
-    */
+
     // If button event has happened, place it to command buffer
     if (btnNow) {
         if (btnNow == btnPrev) {

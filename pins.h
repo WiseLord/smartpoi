@@ -21,7 +21,7 @@
 #define BUTTON_0            B
 #define BUTTON_0_LINE       (1<<4)
 
-#define LED_RED             B
-#define LED_RED_LINE        (1<<5)
+#define BUTTON_1            B
+#define BUTTON_1_LINE       (1<<5)
 
 #endif // PINS_H

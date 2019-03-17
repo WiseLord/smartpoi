@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<data name="colors" type="image">
-    <picture format="png">iVBORw0KGgoAAAANSUhEUgAAABgAAAAICAIAAABsw6g0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAVUlEQVQokXWQwRHAMAjDvP/S6qNNj4DI0yI+UIg9iAFCDMCHNe6gdKPjN6H/Hi0XYO6Hx2+HCkDH13zrgZivUzIOWHwVFx5X0jdBx39gByF2T/fi5QHU50e5zN781gAAAABJRU5ErkJggg==</picture>
+<data type="image" name="colors">
+    <picture format="png">iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAIAAABvFaqvAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAuUlEQVQ4ja2UQRKDMAwDXf7/Z/XQ0DrJyjEz5agNxmhYQkGXFAQUCgLSwBivIM0WHp+J1ru3KRPQvp84/szAAoTHbe7mSEF93UO2FzB9pS44zmTdRHj8C+iFBO3es00vV7wYBAFO87LLUyHNq1uQoNaheLgAIzN9me8igyvnT+oy4OhRy8emRwcfH3lU+Ii/F+dR6eNvt2lKFMD6mKHxqO3jyIxHHR///h2dPWr42Pao9LHj0fxQ7usNnWnFShEvCOcAAAAASUVORK5CYII=</picture>
     <converted>/home/AVR/Projects/smartpoi/program_colors.c</converted>
 </data>
