@@ -10,5 +10,9 @@ typedef struct {
 } tImage;
 
 extern const tImage colors;
+extern const tImage prog_fire;
+extern const tImage prog_sauron;
+extern const tImage prog_stars;
+extern const tImage prog_water;
 
 #endif // PROGRAM_H

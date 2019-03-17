@@ -266,6 +266,10 @@ void effectRun(Effect_t effect)
         effectfFadeColor();
         break;
     case PROG_COLORS:
+    case PROG_FIRE:
+    case PROG_SAURON:
+    case PROG_STARS:
+    case PROG_WATER:
         effectRunProgram(effect);
         break;
     default:
